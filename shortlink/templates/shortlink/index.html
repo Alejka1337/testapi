@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Shortlink Generator</title>
+</head>
+<body>
+    <h1>Shortlink Generator</h1>
+    {% if shortlink %}
+        <p>Your shortlink is: <a href="{{ domain }}{{ shortlink }}">{{ domain }}{{ shortlink }}</a></p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="url">Enter URL:</label>
+        <input type="url" id="url" name="url" required>
+        <button type="submit">Generate Shortlink</button>
+    </form>
+</body>
+</html>
