@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.authtoken import views
 
 from shortlink.views import shortlink_index, redirect_to_url
 
@@ -23,4 +24,5 @@ urlpatterns = [
     path('', shortlink_index),
     path('<str:short_link>/', redirect_to_url),
     path('api-auth/', include('rest_framework.urls')),
+    path('api-token-auth/', views.obtain_auth_token),
 ]
