@@ -1,3 +1,5 @@
 from django.contrib import admin
+from shortlink.models import ShortLink
 
-# Register your models here.
+
+admin.site.register(ShortLink)

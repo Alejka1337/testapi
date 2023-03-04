@@ -18,11 +18,16 @@ from django.urls import path, include
 from rest_framework.authtoken import views
 
 from shortlink.views import shortlink_index, redirect_to_url
+from shortlink.apiviews import CreateShortLink, UpdateShortLink, DetailShortLink
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', shortlink_index),
-    path('<str:short_link>/', redirect_to_url),
+    path('api/create-shortlink/', CreateShortLink.as_view()),
+    path('api/shortlink/detail/<int:id>/', DetailShortLink.as_view()),
+    path('api/shortlink/update/<int:id>/', UpdateShortLink.as_view()),
     path('api-auth/', include('rest_framework.urls')),
     path('api-token-auth/', views.obtain_auth_token),
+    path('', shortlink_index),
+    path('<str:short_link>/', redirect_to_url),
 ]
